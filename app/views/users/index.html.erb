@@ -1,31 +1,26 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Users</h1>
-
-<table>
-  <thead>
+<div class="container">
+  <h1>UsersXXX</h1>
+  <table class="table table-hover">
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Phone</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.address %></td>
-        <td><%= user.phone %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td scope="row"><%= user.name %></td>
+          <td scope="row"><%= user.address %></td>
+          <td scope="row"><%= user.phone %></td>
+          <td><%= link_to 'Show', user, class: "btn btn-outline-primary btn-sm" %></td>
+          <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-outline-primary btn-sm" %></td>
+          <td><%= link_to 'Destroy', user, class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New User', new_user_path, class: 'btn btn-primary btn-sm' %>
+</div>
