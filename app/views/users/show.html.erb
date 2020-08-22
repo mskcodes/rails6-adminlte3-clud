@@ -1,34 +1,48 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @user.sex %>
-</p>
-
-<p>
-  <strong>Mail address:</strong>
-  <%= @user.mail_address %>
-</p>
-
-<p>
-  <strong>Email permission:</strong>
-  <%= @user.email_permission %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>ユーザー情報詳細</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><%= link_to 'ホーム' %></li>
+            <li class="breadcrumb-item active">ユーザー情報詳細</li>
+        </ol>
+        </div>
+    </div>
+  </div>
+</section>
+<div class="card-body">
+  <div class="row">
+    <div class="col-sm-3 text-sm-right"><strong>名前：</strong></div>
+    <div class="cols-sm-8 text-sm-left"><%= @user.name %></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 text-sm-right"><strong>住所：</strong></div>
+    <div class="cols-sm-8 text-sm-left"><%= @user.address %></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 text-sm-right"><strong>電話番号：</strong></div>
+    <div class="cols-sm-8 text-sm-left"><%= @user.phone %></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 text-sm-right"><strong>性別：</strong></div>
+    <div class="cols-sm-8 text-sm-left">
+      <% if @user.sex == 0 then %>男<% else %>女<% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 text-sm-right"><strong>メールアドレス：</strong></div>
+    <div class="cols-sm-8 text-sm-left"><%= @user.mail_address %></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 text-sm-right"><strong>メール受信：</strong></div>
+    <div class="cols-sm-8 text-sm-left">
+      <% if @user.email_permission then %>許可<% else %>許可しない<% end %>
+    </div>
+  </div>
+</div>
+<div class="card-footer">
+  <%= link_to '　戻る　', users_path, class:"btn btn-secondary" %>
+</div>
