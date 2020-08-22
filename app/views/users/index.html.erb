@@ -1,26 +1,67 @@
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <h1>UsersXXX</h1>
-  <table class="table table-hover">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Phone</th>
-      <th colspan="3"></th>
-    </tr>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td scope="row"><%= user.name %></td>
-          <td scope="row"><%= user.address %></td>
-          <td scope="row"><%= user.phone %></td>
-          <td><%= link_to 'Show', user, class: "btn btn-outline-primary btn-sm" %></td>
-          <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-outline-primary btn-sm" %></td>
-          <td><%= link_to 'Destroy', user, class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-  <%= link_to 'New User', new_user_path, class: 'btn btn-primary btn-sm' %>
-</div>
+<%= javascript_pack_tag 'users/index' %>
+<!-- 上部 -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>ユーザー情報一覧</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><%= link_to 'ホーム' %></li>
+          <li class="breadcrumb-item active">ユーザー情報一覧</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+<!-- テーブル -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="users_example" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th style="width:15%;">名前</th>
+                  <th>住所</th>
+                  <th style="width:10%;">電話番号</th>
+                  <th style="width:9%;">性別</th>
+                  <th style="width:15%;">メール</th>
+                  <th style="width:14%;">メール受信</th>
+                  <th style="width:20%;"></th>
+                </tr>
+              </thead>
+            
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.address %></td>
+                    <td><%= user.phone %></td>
+                    <td><% if user.sex == 0 then %>男<% else %>女<% end %></td>
+                    <td><%= user.mail_address %></td>
+                    <td><% if user.email_permission then %>許可<% else %>許可しない<% end %></td></td>
+                    <td><%= link_to '詳細', user, class:"btn btn-outline-primary btn-sm" %>
+                    <%= link_to '編集', edit_user_path(user), class:"btn btn-outline-primary btn-sm" %>
+                    <%= link_to '削除', user, method: :delete, class:"btn btn-outline-danger btn-sm", data: { confirm: '本当によろしいでしょうか？' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content -->

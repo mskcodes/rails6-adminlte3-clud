@@ -2,10 +2,16 @@
 
 one:
   name: MyString
-  address: MyString
+  address: MyText
   phone: MyString
+  sex: 1
+  mail_address: MyString
+  email_permission: false
 
 two:
   name: MyString
-  address: MyString
+  address: MyText
   phone: MyString
+  sex: 1
+  mail_address: MyString
+  email_permission: false

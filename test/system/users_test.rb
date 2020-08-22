@@ -15,8 +15,11 @@ class UsersTest < ApplicationSystemTestCase
     click_on "New User"
 
     fill_in "Address", with: @user.address
+    check "Email permission" if @user.email_permission
+    fill_in "Mail address", with: @user.mail_address
     fill_in "Name", with: @user.name
     fill_in "Phone", with: @user.phone
+    fill_in "Sex", with: @user.sex
     click_on "Create User"
 
     assert_text "User was successfully created"
@@ -28,8 +31,11 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Address", with: @user.address
+    check "Email permission" if @user.email_permission
+    fill_in "Mail address", with: @user.mail_address
     fill_in "Name", with: @user.name
     fill_in "Phone", with: @user.phone
+    fill_in "Sex", with: @user.sex
     click_on "Update User"
 
     assert_text "User was successfully updated"
