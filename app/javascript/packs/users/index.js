@@ -3,7 +3,7 @@ import "admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js";
 import "admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js";
 import "admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js";
 
-$(function () {
+$( document ).on('turbolinks:load', function() {
   $("#users_example").DataTable({
     paging: true,
     lengthChange: true,
